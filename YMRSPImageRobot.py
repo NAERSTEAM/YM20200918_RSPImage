@@ -1,6 +1,7 @@
 #Cution:This example is not supported by the officail ImageAI!!!
 #This is the examplpe for AIT test+Project_RSPImageRobot_20200801_0
 
+#Sep 19 2020 T.I. Added serialPortSetting() framework
 #SEP 18 2020 T.I. Created this file for the Lesson_20200914_0 ProjectRSPImage review
 
 
@@ -78,8 +79,10 @@ def videoLoop():
     
 
 
-def serialSetting():
+def serialPortSetting():
     pass
+
+serialPortSetting()
 
 thread_video=threading.Thread(target=videoLoop)
 thread_game=threading.Thread(target=gameLoop)
