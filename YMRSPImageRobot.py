@@ -1,6 +1,8 @@
 #Cution:This example is not supported by the officail ImageAI!!!
 #This is the examplpe for AIT test+Project_RSPImageRobot_20200801_0
 
+#Sep 19 2020 T.I. Implemented  "GameLoopDisplay()" 
+#                 Added countdown process in the gameLoop
 #Sep 19 2020 T.I. Added serialPortSetting() framework
 #SEP 18 2020 T.I. Created this file for the Lesson_20200914_0 ProjectRSPImage review
 
@@ -31,7 +33,9 @@ outputChar="0"
 
 
 def GameLoopDisplay(ImgName,waitk):
-    pass
+    UIFrame = cv2.imread(ImgName)
+    cv2.imshow("UI",UIFrame)
+    cv2.waitKey(waitk)
 
 
 def GameLoopMotion(MotionGesture):
@@ -42,7 +46,11 @@ def gameLoop():
 
     global UserSign
     while var == 1 :  # This constructs an infinite loop
-        print("gameLoop")
+        GameLoopDisplay("0_PressAnyKey.png",0)
+        GameLoopDisplay("1_CountDown3.png",700)
+        GameLoopDisplay("2_CountDown2.png",700)
+        GameLoopDisplay("3_CountDown1.png",700)
+        GameLoopDisplay("4_CountDown0.png",500)
 
         
 
