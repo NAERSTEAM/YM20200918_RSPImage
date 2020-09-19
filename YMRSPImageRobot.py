@@ -1,6 +1,10 @@
 #Cution:This example is not supported by the officail ImageAI!!!
 #This is the examplpe for AIT test+Project_RSPImageRobot_20200801_0
 
+#demo pictures: https://www.reddit.com/r/FortNiteBR/comments/7l2ovk/we_need_a_rock_paper_scissors_emotes/
+
+#Sep 19 2020 T.I. Added random selecetion for pictures display
+#                 
 #Sep 19 2020 T.I. Implemented  "GameLoopDisplay()" 
 #                 Added countdown process in the gameLoop
 #Sep 19 2020 T.I. Added serialPortSetting() framework
@@ -52,6 +56,9 @@ def gameLoop():
         GameLoopDisplay("3_CountDown1.png",700)
         GameLoopDisplay("4_CountDown0.png",500)
 
+
+        MachineSign=random.randint(0,2)
+        GameLoopDisplay(SignImageDic[MachineSign],2000)
         
 
 def per_frame_function_DataGet(counting, output_objects_array, output_objects_count,detected_frame):
