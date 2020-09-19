@@ -3,6 +3,7 @@
 
 #demo pictures: https://www.reddit.com/r/FortNiteBR/comments/7l2ovk/we_need_a_rock_paper_scissors_emotes/
 
+#Sep 19 2020 T.I. Added match result
 #Sep 19 2020 T.I. Added random selecetion for pictures display
 #                 
 #Sep 19 2020 T.I. Implemented  "GameLoopDisplay()" 
@@ -59,6 +60,14 @@ def gameLoop():
 
         MachineSign=random.randint(0,2)
         GameLoopDisplay(SignImageDic[MachineSign],2000)
+		
+        matchResult=matchTable[UserSign][MachineSign]
+		
+        if 2 == matchResult:
+            GameLoopDisplay("5_YouWin.png",0)
+        if 0 == matchResult:
+            GameLoopDisplay("6_YouLoss.png",0)            
+        
         
 
 def per_frame_function_DataGet(counting, output_objects_array, output_objects_count,detected_frame):
