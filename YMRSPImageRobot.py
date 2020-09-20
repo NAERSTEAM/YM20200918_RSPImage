@@ -3,6 +3,7 @@
 
 #demo pictures: https://www.reddit.com/r/FortNiteBR/comments/7l2ovk/we_need_a_rock_paper_scissors_emotes/
 
+#Sep 20 2020 T.I. Added serial motion control 
 #Sep 19 2020 T.I. Added match result
 #Sep 19 2020 T.I. Added random selecetion for pictures display
 #                 
@@ -44,7 +45,8 @@ def GameLoopDisplay(ImgName,waitk):
 
 
 def GameLoopMotion(MotionGesture):
-    pass
+    outputChar=str(MotionGesture)
+    ser.write(outputChar.encode())
 
 def gameLoop():
     var=1
@@ -59,6 +61,7 @@ def gameLoop():
 
 
         MachineSign=random.randint(0,2)
+        GameLoopMotion(MachineSign+1)
         GameLoopDisplay(SignImageDic[MachineSign],2000)
 		
         matchResult=matchTable[UserSign][MachineSign]
@@ -104,8 +107,21 @@ def videoLoop():
 
 
 def serialPortSetting():
-    pass
+    global ser
 
+    comlist = serial.tools.list_ports.comports()
+    connected = []
+
+    for element in comlist:
+        connected.append(element.device)
+        
+    print("Connected COM ports: " + str(connected))
+    COM_PORT = input("Port?:")
+    
+    BAUD_RATES = 9600
+    ser = serial.Serial(COM_PORT, BAUD_RATES)
+
+	
 serialPortSetting()
 
 thread_video=threading.Thread(target=videoLoop)
