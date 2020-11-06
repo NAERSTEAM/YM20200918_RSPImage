@@ -3,14 +3,7 @@
 
 #demo pictures: https://www.reddit.com/r/FortNiteBR/comments/7l2ovk/we_need_a_rock_paper_scissors_emotes/
 
-#Sep 20 2020 T.I. Added serial motion control 
-#Sep 19 2020 T.I. Added match result
-#Sep 19 2020 T.I. Added random selecetion for pictures display
-#                 
-#Sep 19 2020 T.I. Implemented  "GameLoopDisplay()" 
-#                 Added countdown process in the gameLoop
-#Sep 19 2020 T.I. Added serialPortSetting() framework
-#SEP 18 2020 T.I. Created this file for the Lesson_20200914_0 ProjectRSPImage review
+#Nov 6 2020, Branched from "YM20200918_RSPImage" master and modified for the python practice.
 
 
 from imageai.Detection.Custom import CustomVideoObjectDetection
@@ -29,7 +22,7 @@ from pygame import mixer
 
 
 UserSign=0
-matchTable=[[1,2,0],[0,1,2],[2,0,1]]
+matchTable=[[1,2,0],[0,1,0],[0,0,1]]
 SignDic={"five gesture":2,"v gesture":1,"fist gesture":0}
 SignImageDic={0:"fist.png",1:"v.png",2:"five.png"}
 scoreDic={0:"Lose",1:"Tight",2:"Win"}
@@ -52,24 +45,20 @@ def gameLoop():
     var=1
 
     global UserSign
-    while var == 1 :  # This constructs an infinite loop
-        GameLoopDisplay("0_PressAnyKey.png",0)
-        GameLoopDisplay("1_CountDown3.png",700)
-        GameLoopDisplay("2_CountDown2.png",700)
-        GameLoopDisplay("3_CountDown1.png",700)
-        GameLoopDisplay("4_CountDown0.png",500)
+    
+    GameLoopDisplay("0_PressAnyKey.png",0)
 
 
-        MachineSign=random.randint(0,2)
-        GameLoopMotion(MachineSign+1)
-        GameLoopDisplay(SignImageDic[MachineSign],2000)
+
+    MachineSign=random.randint(0,1)
+    GameLoopMotion(MachineSign+1)
+    GameLoopDisplay(SignImageDic[MachineSign],2000)
 		
-        matchResult=matchTable[UserSign][MachineSign]
+    matchResult=matchTable[UserSign][MachineSign]
 		
-        if 2 == matchResult:
-            GameLoopDisplay("5_YouWin.png",0)
-        if 0 == matchResult:
-            GameLoopDisplay("6_YouLoss.png",0)            
+
+    if 0 == matchResult:
+        GameLoopDisplay("6_YouLoss.png",0)            
         
         
 
