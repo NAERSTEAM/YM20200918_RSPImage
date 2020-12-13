@@ -3,7 +3,8 @@
 
 #demo pictures: https://www.reddit.com/r/FortNiteBR/comments/7l2ovk/we_need_a_rock_paper_scissors_emotes/
 
-#Dec10 2020, refacor for 
+#Dec13 2020, Added full function for RSP game
+#Dec10 2020, added esc and refactor
 #Nov24 2020,
 #Nov 6 2020, Branched from "YM20200918_RSPImage" master and modified for the python practice.
 
@@ -24,7 +25,7 @@ from pygame import mixer
 
 
 UserSign=0
-matchTable=[[1,0,1],[1,1,0],[0,1,1]]
+matchTable=[[1,0,2],[2,1,0],[0,2,1]]
 SignDic={"p":2,"s":0,"r":1}
 SignImageDic={1:"fist.png",0:"v.png",2:"five.png"}
 scoreDic={0:"Lose",1:"Tight",2:"Win"}
@@ -114,7 +115,10 @@ def gameLoop():
     
     while 1==var:
         GameLoopDisplay("0_PressAnyKey.png",0)
-
+        GameLoopDisplay("1_CountDown3.png",700)
+        GameLoopDisplay("2_CountDown2.png",700)
+        GameLoopDisplay("3_CountDown1.png",700)
+        GameLoopDisplay("4_CountDown0.png",700)
 
         MachineSign=random.randint(0,2)
         GameLoopMotion(MachineSign+1)
@@ -123,6 +127,8 @@ def gameLoop():
         matchResult=matchTable[UserSign][MachineSign]
 		
 
+        if 2 == matchResult:
+            GameLoopDisplay("5_YouWin.png",0)  
         if 0 == matchResult:
             GameLoopDisplay("6_YouLoss.png",0)    
 
